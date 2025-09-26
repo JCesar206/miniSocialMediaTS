@@ -154,7 +154,7 @@ export default function App(): JSX.Element {
                 onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
                 className="px-3 py-1 rounded-lg border dark:border-gray-700 text-sm font-semibold dark:text-white cursor-pointer"
               >
-                {theme === "light" ? "🌞 Claro" : "🌙 Oscuro"}
+                {theme === "light" ? "🌞" : "🌙"}
               </button>
             </div>
           </header>
@@ -208,7 +208,7 @@ export default function App(): JSX.Element {
 
                 <button
                   onClick={handleAddOrUpdate}
-                  className="px-4 py-1 rounded bg-blue-600 text-white font-semibold text-sm hover:opacity-90 cursor-pointer"
+                  className="px-4 py-1 rounded bg-blue-600 hover:bg-blue-900 text-white font-semibold text-sm hover:opacity-60 cursor-pointer"
                 >
                   {editingId ? "Actualizar" : "Agregar"}
                 </button>
