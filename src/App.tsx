@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaHome, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 import "./App.css"
 
 type Post = {
@@ -147,7 +145,7 @@ export default function App(): JSX.Element {
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-3xl mx-auto">
           <header className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Mini Red Social</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Mini Red Social 😎</h1>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600 dark:text-gray-300 font-semibold">Tema</span>
               <button
@@ -282,21 +280,11 @@ function Footer() {
       <div className="w-full max-w-3xl mx-auto py-6 flex items-center justify-center">
         <div className="text-center text-sm text-gray-600 dark:text-gray-300 font-semibold">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">
-            <FaHome size={20} />
-            </a>
-            <a href="https://github.com/JCesar206/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">
-            <FaGithub size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">
-            <FaLinkedin size={20} />
-            </a>
-            <a href="mailto:jcesar206@hotmail.com" className="underline hover:text-purple-600">
-            <FaEnvelope size={20} />
-            </a>
-            <a href="mailto:jcesary06@gtmail.com" className="underline hover:text-purple-600">
-            <SiGmail size={20} />
-            </a>
+            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Home Page</a>
+            <a href="https://github.com/JCesar206/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Github</a>
+            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Linkedin</a>
+            <a href="mailto:jcesar206@hotmail.com" className="underline hover:text-purple-600">Hotmail</a>
+            <a href="mailto:jcesary06@gtmail.com" className="underline hover:text-purple-600">Gmail</a>
           </div>
           <div>&copy; {new Date().getFullYear()} Mini Social Media | Juls | All right reserved.</div>
         </div>
