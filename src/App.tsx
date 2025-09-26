@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./App.css"
 
 type Post = {
   id: string;
@@ -14,11 +13,11 @@ const THEME_KEY = "mini-social.theme.v1";
 
 const EMOJIS = ["😀", "😂", "😍", "😢", "😮", "🔥", "👍", "❤️", "🎉", "🤔"];
 
-export default function App(): JSX.Element {
+export default function App() {
   const [posts, setPosts] = useState<Post[]>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) as Post[] : [];
+      return raw ? (JSON.parse(raw) as Post[]) : [];
     } catch (e) {
       console.error(e);
       return [];
@@ -113,7 +112,6 @@ export default function App(): JSX.Element {
     setTitle(p.title);
     setComment(p.comment);
     setImagePreview(p.imageDataUrl);
-    // don't prefill file input (can't set file programmatically)
     if (commentRef.current) commentRef.current.focus();
   }
 
@@ -123,7 +121,6 @@ export default function App(): JSX.Element {
   }
 
   function handleEmojiClick(e: string) {
-    // append emoji to comment and focus
     setComment((c) => c + e);
     if (commentRef.current) commentRef.current.focus();
   }
@@ -133,26 +130,19 @@ export default function App(): JSX.Element {
     setImageFile(f);
   }
 
-  function uploadImageFromClipboard() {
-    // optional: paste support - won't work in all browsers; keep minimal
-    navigator.clipboard?.read().then((items) => {
-      // ignore for now, intentionally minimal
-    }).catch(() => {});
-  }
-
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 transition-colors">
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-3xl mx-auto">
           <header className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Mini Red Social 😎</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Mini Red Social</h1>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-300 font-semibold">Tema</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300">Tema</span>
               <button
                 onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
-                className="px-3 py-1 rounded-lg border hover:bg-gray-300 dark:border-gray-700 text-sm font-semibold dark:text-white cursor-pointer"
+                className="px-3 py-1 rounded-lg border dark:border-gray-700 text-sm"
               >
-                {theme === "light" ? "🌞" : "🌙"}
+                {theme === "light" ? "🌞 Claro" : "🌙 Oscuro"}
               </button>
             </div>
           </header>
@@ -164,7 +154,7 @@ export default function App(): JSX.Element {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-md border p-2 mb-3 bg-gray-50 text-black dark:bg-gray-700 border-gray-200 dark:border-gray-600 dark:text-white focus:outline-none font-semibold"
+                className="w-full rounded-md border p-2 mb-3 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:outline-none"
                 placeholder="Pon un título (opcional)"
               />
 
@@ -174,39 +164,38 @@ export default function App(): JSX.Element {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 rows={3}
-                className="w-full rounded-md border p-2 mb-3 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 dark:text-white focus:outline-none resize-none font-semibold"
+                className="w-full rounded-md border p-2 mb-3 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:outline-none resize-none"
                 placeholder="Escribe algo sobre la imagen..."
               />
 
               <div className="flex items-center gap-3 mb-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-                  <div className="px-3 py-1 rounded font-semibold bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 text-sm cursor-pointer dark:text-white">📁 Seleccionar imagen</div>
+                  <div className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-sm">📁 Seleccionar imagen</div>
                 </label>
 
                 <button
                   onClick={() => {
-                    // clear file input and preview
                     setImageFile(null);
                     setImagePreview(undefined);
                     if (fileRef.current) fileRef.current.value = "";
                     if (commentRef.current) commentRef.current.focus();
                   }}
-                  className="px-3 py-1 rounded font-semibold bg-gray-200 dark:bg-gray-700 text-sm hover:bg-gray-300 cursor-pointer dark:text-white"
+                  className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-sm"
                 >
                   🧹 Limpiar imagen
                 </button>
 
                 <button
                   onClick={() => clearForm()}
-                  className="ml-auto px-3 py-1 font-semibold rounded border text-sm cursor-pointer dark:text-white hover:bg-gray-300"
+                  className="ml-auto px-3 py-1 rounded border text-sm"
                 >
                   Limpiar campos
                 </button>
 
                 <button
                   onClick={handleAddOrUpdate}
-                  className="px-4 py-1 rounded bg-blue-600 hover:bg-blue-900 text-white font-semibold text-sm hover:opacity-80 cursor-pointer"
+                  className="px-4 py-1 rounded bg-blue-600 text-white text-sm hover:opacity-90"
                 >
                   {editingId ? "Actualizar" : "Agregar"}
                 </button>
@@ -224,7 +213,7 @@ export default function App(): JSX.Element {
                   <button
                     key={e}
                     onClick={() => handleEmojiClick(e)}
-                    className="px-2 py-1 rounded border text-sm hover:bg-gray-300 cursor-pointer dark:border-white"
+                    className="px-2 py-1 rounded border text-sm"
                   >
                     {e}
                   </button>
@@ -236,7 +225,7 @@ export default function App(): JSX.Element {
               <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-100">Publicaciones</h2>
 
               {posts.length === 0 && (
-                <div className="text-sm text-gray-600 font-semibold dark:text-gray-300">No hay publicaciones. Crea la primera.</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">No hay publicaciones. Crea la primera.</div>
               )}
 
               <div className="grid gap-4">
@@ -278,15 +267,15 @@ function Footer() {
   return (
     <footer className="mt-6">
       <div className="w-full max-w-3xl mx-auto py-6 flex items-center justify-center">
-        <div className="text-center text-sm text-gray-600 dark:text-gray-300 font-semibold">
+        <div className="text-center text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Home Page</a>
-            <a href="https://github.com/JCesar206/" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Github</a>
-            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline hover:text-purple-600">Linkedin</a>
-            <a href="mailto:jcesar206@hotmail.com" className="underline hover:text-purple-600">Hotmail</a>
-            <a href="mailto:jcesary06@gtmail.com" className="underline hover:text-purple-600">Gmail</a>
+            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline">Home Page</a>
+            <a href="https://github.com/JCesar206" target="_blank" rel="noreferrer" className="underline">Github</a>
+            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline">LinkedIn</a>
+            <a href="mailto:jcesar206@hotmail.com" className="underline">Hotmail</a>
+            <a href="mailto:jcesary06@gmail.com" className="underline">Gmail</a>
           </div>
-          <div>&copy; {new Date().getFullYear()} Mini Social Media | Juls | All right reserved.</div>
+          <div>© {new Date().getFullYear()} Mini Social Media | Juls | All right reserved.</div>
         </div>
       </div>
     </footer>
