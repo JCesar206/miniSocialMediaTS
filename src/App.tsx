@@ -152,7 +152,7 @@ export default function App(): JSX.Element {
               <span className="text-sm text-gray-600 dark:text-gray-300 font-semibold">Tema</span>
               <button
                 onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
-                className="px-3 py-1 rounded-lg border dark:border-gray-700 text-sm font-semibold dark:text-white cursor-pointer"
+                className="px-3 py-1 rounded-lg border hover:bg-gray-300 dark:border-gray-700 text-sm font-semibold dark:text-white cursor-pointer"
               >
                 {theme === "light" ? "🌞" : "🌙"}
               </button>
@@ -183,7 +183,7 @@ export default function App(): JSX.Element {
               <div className="flex items-center gap-3 mb-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-                  <div className="px-3 py-1 rounded font-semibold bg-gray-200 dark:bg-gray-700 text-sm cursor-pointer dark:text-white">📁 Seleccionar imagen</div>
+                  <div className="px-3 py-1 rounded font-semibold bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 text-sm cursor-pointer dark:text-white">📁 Seleccionar imagen</div>
                 </label>
 
                 <button
@@ -194,21 +194,21 @@ export default function App(): JSX.Element {
                     if (fileRef.current) fileRef.current.value = "";
                     if (commentRef.current) commentRef.current.focus();
                   }}
-                  className="px-3 py-1 rounded font-semibold bg-gray-200 dark:bg-gray-700 text-sm cursor-pointer dark:text-white"
+                  className="px-3 py-1 rounded font-semibold bg-gray-200 dark:bg-gray-700 text-sm hover:bg-gray-300 cursor-pointer dark:text-white"
                 >
                   🧹 Limpiar imagen
                 </button>
 
                 <button
                   onClick={() => clearForm()}
-                  className="ml-auto px-3 py-1 font-semibold rounded border text-sm cursor-pointer dark:text-white"
+                  className="ml-auto px-3 py-1 font-semibold rounded border text-sm cursor-pointer dark:text-white hover:bg-gray-300"
                 >
                   Limpiar campos
                 </button>
 
                 <button
                   onClick={handleAddOrUpdate}
-                  className="px-4 py-1 rounded bg-blue-600 hover:bg-blue-900 text-white font-semibold text-sm hover:opacity-60 cursor-pointer"
+                  className="px-4 py-1 rounded bg-blue-600 hover:bg-blue-900 text-white font-semibold text-sm hover:opacity-80 cursor-pointer"
                 >
                   {editingId ? "Actualizar" : "Agregar"}
                 </button>
@@ -226,7 +226,7 @@ export default function App(): JSX.Element {
                   <button
                     key={e}
                     onClick={() => handleEmojiClick(e)}
-                    className="px-2 py-1 rounded border text-sm cursor-pointer dark:border-white"
+                    className="px-2 py-1 rounded border text-sm hover:bg-gray-300 cursor-pointer dark:border-white"
                   >
                     {e}
                   </button>
