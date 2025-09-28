@@ -159,7 +159,7 @@ export default function App() {
                 placeholder="Pon un título (opcional)"
               />
 
-              <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200 font-semibold">Comentario</label>
+              <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200 font-semibold">Comentario</label>
               <textarea
                 ref={commentRef}
                 value={comment}
@@ -223,7 +223,7 @@ export default function App() {
             </section>
 
             <section>
-              <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-100 font-semibold">Publicaciones</h2>
+              <h2 className="text-lg mb-4 text-gray-800 dark:text-gray-100 font-semibold">Publicaciones</h2>
 
               {posts.length === 0 && (
                 <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">No hay publicaciones. Crea la primera.</div>
