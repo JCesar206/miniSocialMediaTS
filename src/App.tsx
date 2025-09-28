@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./App.css"
+import "./App.css";
 
 type Post = {
   id: string;
@@ -141,7 +141,7 @@ export default function App() {
               <span className="text-sm text-gray-600 dark:text-gray-300 font-semibold">Tema</span>
               <button
                 onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
-                className="px-3 py-1 rounded-lg border dark:border-gray-900 text-sm hover:bg-gray-400 cursor-pointer"
+                className="px-3 py-1 rounded-lg bg-gray-300 hover:bg-gray-500 dark:border-gray-700 cursor-pointer"
               >
                 {theme === "light" ? "🌞" : "🌙"}
               </button>
@@ -150,12 +150,12 @@ export default function App() {
 
           <main className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6">
             <section className="mb-6">
-              <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200">Título de la imagen</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200 ">Título de la imagen</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-md border p-2 mb-3 bg-gray-50 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:outline-none font-semibold"
+                className="w-full rounded-md border p-2 mb-3 bg-gray-50 font-semibold dark:bg-gray-700 dark:text-white border-gray-200 dark:border-gray-600 focus:outline-none"
                 placeholder="Pon un título (opcional)"
               />
 
@@ -165,14 +165,14 @@ export default function App() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 rows={3}
-                className="w-full rounded-md border p-2 mb-3 bg-gray-50 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:outline-none resize-none font-semibold"
+                className="w-full rounded-md border p-2 mb-3 bg-gray-50 font-semibold dark:bg-gray-700 border-gray-200 dark:text-white dark:border-gray-600 focus:outline-none resize-none"
                 placeholder="Escribe algo sobre la imagen..."
               />
 
               <div className="flex items-center gap-3 mb-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-                  <div className="px-3 py-1 font-semibold bg-gray-200 hover:bg-gray-400 rounded bg-gray-200 dark:bg-gray-700 dark:text-white text-sm cursor-pointer">📁 Seleccionar imagen</div>
+                  <div className="px-3 py-1 rounded bg-gray-200 font-semibold hover:bg-gray-500 hover:text-white dark:bg-gray-700 dark:text-white text-sm">📁 Seleccionar imagen</div>
                 </label>
 
                 <button
@@ -182,21 +182,21 @@ export default function App() {
                     if (fileRef.current) fileRef.current.value = "";
                     if (commentRef.current) commentRef.current.focus();
                   }}
-                  className="px-3 py-1 font-semibold bg-gray-200 hover:bg-gray-400 rounded bg-gray-200 dark:bg-gray-700 dark:text-white text-sm cursor-pointer"
+                  className="px-3 py-1 rounded bg-gray-200 font-semibold hover:bg-gray-500 hover:text-white dark:bg-gray-700 dark:text-white text-sm cursor-pointer"
                 >
                   🧹 Limpiar imagen
                 </button>
 
                 <button
                   onClick={() => clearForm()}
-                  className="ml-auto px-3 py-1 font-semibold bg-gray-200 hover:bg-gray-400 dark:bg-gray-700 dark:text-white rounded text-sm hover:bg-gray-300 cursor-pointer"
+                  className="ml-auto px-3 py-1 bg-gray-200 font-semibold hover:bg-gray-500 hover:text-white rounded text-sm dark:bg-gray-700 dark:text-white cursor-pointer"
                 >
                   Limpiar campos
                 </button>
 
                 <button
                   onClick={handleAddOrUpdate}
-                  className="px-4 py-1 rounded bg-blue-600 font-semibold text-white text-sm hover:bg-blue-300 hover:opacity-90 hover:bg-blue-950 cursor-pointer"
+                  className="px-4 py-1 rounded bg-blue-600 text-white text-sm font-semibold hover:bg-blue-900 hover:opacity-90 cursor-pointer"
                 >
                   {editingId ? "Actualizar" : "Agregar"}
                 </button>
@@ -204,7 +204,7 @@ export default function App() {
 
               {imagePreview && (
                 <div className="mb-3">
-                  <div className="text-xs text-gray-600 dark:text-gray-300 mb-1 font-semibold">Previsualización</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-1">Previsualización</div>
                   <img src={imagePreview} alt="preview" className="max-h-40 rounded-lg object-contain" />
                 </div>
               )}
@@ -214,7 +214,7 @@ export default function App() {
                   <button
                     key={e}
                     onClick={() => handleEmojiClick(e)}
-                    className="px-2 py-1 rounded bg-gray-200 hover:bg-gray-400 text-sm cursor-pointer"
+                    className="px-2 py-1 bg-gray-300 hover:bg-gray-500 rounded text-sm cursor-pointer"
                   >
                     {e}
                   </button>
@@ -226,7 +226,7 @@ export default function App() {
               <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-100 font-semibold">Publicaciones</h2>
 
               {posts.length === 0 && (
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-semibold">No hay publicaciones. Crea la primera.</div>
+                <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">No hay publicaciones. Crea la primera.</div>
               )}
 
               <div className="grid gap-4">
@@ -236,7 +236,7 @@ export default function App() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <div className="text-sm font-semibold text-gray-800 dark:text-gray-100">{p.title}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{new Date(p.createdAt).toLocaleString()}</div>
+                          <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">{new Date(p.createdAt).toLocaleString()}</div>
                         </div>
                         <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{p.comment}</p>
                         {p.imageDataUrl && (
@@ -246,8 +246,8 @@ export default function App() {
                         )}
 
                         <div className="mt-3 flex gap-2">
-                          <button onClick={() => startEdit(p.id)} className="px-3 py-1 rounded border text-sm font-semibold cursor-pointer">Editar</button>
-                          <button onClick={() => removePost(p.id)} className="px-3 py-1 rounded border text-sm font-semibold cursor-pointer">Eliminar</button>
+                          <button onClick={() => startEdit(p.id)} className="px-3 py-1 rounded bg-yellow-400 text-white hover:bg-yellow-600 text-sm font-semibold cursor-pointer">Editar</button>
+                          <button onClick={() => removePost(p.id)} className="px-3 py-1 rounded  bg-red-400 text-white hover:bg-red-600 text-sm font-semibold cursor-pointer">Eliminar</button>
                         </div>
                       </div>
                     </div>
@@ -270,11 +270,11 @@ function Footer() {
       <div className="w-full max-w-3xl mx-auto py-6 flex items-center justify-center">
         <div className="text-center text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline hover:text-purple-700 font-semibold">Home Page</a>
-            <a href="https://github.com/JCesar206" target="_blank" rel="noreferrer" className="underline hover:text-purple-700 font-semibold">Github</a>
-            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline hover:text-purple-700 font-semibold">LinkedIn</a>
-            <a href="mailto:jcesar206@hotmail.com" className="underline hover:text-purple-700 font-semibold">Hotmail</a>
-            <a href="mailto:jcesary06@gmail.com" className="underline hover:text-purple-700 font-semibold">Gmail</a>
+            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-600">Home Page</a>
+            <a href="https://github.com/JCesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700">Github</a>
+            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700">LinkedIn</a>
+            <a href="mailto:jcesar206@hotmail.com" className="underline font-semibold hover:text-purple-700">Hotmail</a>
+            <a href="mailto:jcesary06@gmail.com" className="underline font-semibold hover:text-purple-700">Gmail</a>
           </div>
           <div>© {new Date().getFullYear()} Mini Social Media | Juls | All right reserved.</div>
         </div>
