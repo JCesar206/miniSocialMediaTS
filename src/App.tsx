@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaHome, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import "./App.css";
 
 type Post = {
@@ -270,11 +272,11 @@ function Footer() {
       <div className="w-full max-w-3xl mx-auto py-6 flex items-center justify-center">
         <div className="text-center text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-600">Home Page</a>
-            <a href="https://github.com/JCesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700">Github</a>
-            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700">LinkedIn</a>
-            <a href="mailto:jcesar206@hotmail.com" className="underline font-semibold hover:text-purple-700">Hotmail</a>
-            <a href="mailto:jcesary06@gmail.com" className="underline font-semibold hover:text-purple-700">Gmail</a>
+            <a href="https://jcesar206.github.io/myPersonalBlog/" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-600"><FaHome size={22} title="Home Page"/></a>
+            <a href="https://github.com/JCesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700"><FaGithub size={22} title="Github"/></a>
+            <a href="https://www.linkedin.com/in/jcesar206" target="_blank" rel="noreferrer" className="underline font-semibold hover:text-purple-700"><FaLinkedin size={22} title="Linkedin"/></a>
+            <a href="mailto:jcesar206@hotmail.com" className="underline font-semibold hover:text-purple-700"><FaEnvelope size={22} title="Hotmail"/></a>
+            <a href="mailto:jcesary06@gmail.com" className="underline font-semibold hover:text-purple-700"><SiGmail size={22} title="Gmail"/></a>
           </div>
           <div>© {new Date().getFullYear()} Mini Social Media | Juls | All right reserved.</div>
         </div>
